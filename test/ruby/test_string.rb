@@ -2567,6 +2567,23 @@ CODE
     assert_equal("\u3042", "\u3042\u3043".chr)
     assert_equal('', ''.chr)
   end
+
+  def test_palindrome
+    [ "Sator Arepo Tenet Opera Rotas",
+      "A man, a plan, a canal - Panama!",
+      "Madam, I'm Adam",
+      "NisiOisiN",
+      "わかみかものとかなかとのもかみかわ",
+      "アニマルマニア",
+    ].each do |str|
+      assert_equal(str.palindrome?, true)
+    end
+    [ "",
+      "ab",
+    ].each do |str|
+      assert_equal(str.palindrome?, false)
+    end
+  end
 end
 
 class TestString2 < TestString
