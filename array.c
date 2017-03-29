@@ -1342,6 +1342,13 @@ rb_ary_first(int argc, VALUE *argv, VALUE ary)
     }
 }
 
+static VALUE
+rb_ary_second(VALUE ary)
+{
+  if (RARRAY_LEN(ary) < 2) return Qnil;
+  return RARRAY_AREF(ary, 1);
+}
+
 /*
  *  call-seq:
  *     ary.last     ->  obj or nil
@@ -6162,6 +6169,7 @@ Init_Array(void)
     rb_define_method(rb_cArray, "at", rb_ary_at, 1);
     rb_define_method(rb_cArray, "fetch", rb_ary_fetch, -1);
     rb_define_method(rb_cArray, "first", rb_ary_first, -1);
+    rb_define_method(rb_cArray, "second", rb_ary_second, 0);
     rb_define_method(rb_cArray, "last", rb_ary_last, -1);
     rb_define_method(rb_cArray, "concat", rb_ary_concat_multi, -1);
     rb_define_method(rb_cArray, "<<", rb_ary_push, 1);
